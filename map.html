@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Propagation Maps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .iframe-container {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 850px;
+            height: auto;
+            aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+            position: relative;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .buttons {
+            margin: 20px;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        let currentUrl = 'https://prop.kc2g.com/renders/current/mufd-normal-now.svg';
+
+        function showMap(url) {
+            currentUrl = url;
+            document.getElementById('mapIframe').src = url;
+        }
+
+        function refreshIframe() {
+            document.getElementById('mapIframe').src = currentUrl;
+        }
+
+        // Refresh the iframe every 15 minutes (900000 milliseconds)
+        setInterval(refreshIframe, 900000);
+    </script>
+</head>
+<body>
+    <h1>Radio Propagation Maps</h1>
+    <div class="iframe-container">
+        <iframe id="mapIframe" src="https://prop.kc2g.com/renders/current/mufd-normal-now.svg" title="Radio Propagation Map"></iframe>
+    </div>
+    <div class="buttons">
+        <button onclick="showMap('https://prop.kc2g.com/renders/current/mufd-normal-now.svg')">Show MUF Map</button>
+        <button onclick="showMap('https://prop.kc2g.com/renders/current/fof2-normal-now.svg')">Show foF2 Map</button>
+        <button onclick="showMap('https://services.swpc.noaa.gov/images/animations/d-rap/global/d-rap/latest.png')">Show D-RAP 1 dB Map</button>
+        <button onclick="showMap('https://services.swpc.noaa.gov/images/animations/d-rap/global_f05/d-rap/latest.png')">Show D-RAP 5 MHz Map</button>
+        <button onclick="showMap('https://services.swpc.noaa.gov/images/animations/d-rap/global_f10/d-rap/latest.png')">Show D-RAP 10 MHz Map</button>
+        <button onclick="showMap('https://services.swpc.noaa.gov/images/animations/d-rap/global_f15/d-rap/latest.png')">Show D-RAP 15 MHz Map</button>
+        <button onclick="showMap('https://services.swpc.noaa.gov/images/animations/d-rap/global_f20/d-rap/latest.png')">Show D-RAP 20 MHz Map</button>
+        <button onclick="showMap('https://services.swpc.noaa.gov/images/animations/d-rap/global_f25/d-rap/latest.png')">Show D-RAP 25 MHz Map</button>
+        <button onclick="showMap('https://services.swpc.noaa.gov/images/animations/d-rap/global_f30/d-rap/latest.png')">Show D-RAP 30 MHz Map</button>
+    </div>
+</body>
+</html>
